@@ -55,7 +55,7 @@ class FinancialTransaction(Abs_Named_Model):
     
     project = models.ForeignKey('projects.Project')
     
-    transaction_type = models.CharField(_('Transaction Type'), choices=TRANSACTION_TYPE, default=TRANSACTION_TYPE.debit)
+    transaction_type = models.CharField(_('Transaction Type'), choices=TRANSACTION_TYPE, default=TRANSACTION_TYPE.debit, max_length=2)
     
   
     objects = TransactionTypeAwareManager()  
@@ -67,7 +67,7 @@ class DebitTransaction(FinancialTransaction):
     
     class Meta:
         app_label = 'finances'
-        prox = True
+        proxy = True
         
     objects = TransactionTypeAwareManager(type=FinancialTransaction.TRANSACTION_TYPE.debit)
 
@@ -79,7 +79,7 @@ class CreditTransaction(FinancialTransaction):
     
     class Meta:
         app_label = 'finances'
-        prox = True
+        proxy = True
         
     objects = TransactionTypeAwareManager(type=FinancialTransaction.TRANSACTION_TYPE.credit)
 
