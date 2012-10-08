@@ -19,5 +19,8 @@ INSTALLED_APPS = (
 #libs
     'html5_boilerplate',
     'utils',
+    
+#deploy
+    'gunicorn',
 )
 

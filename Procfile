@@ -1,2 +1,1 @@
-web: python sdpm/manager.py runserver 0.0.0.0
-
+web: gunicorn sdpm.wsgi -b 0.0.0.0:$PORT
