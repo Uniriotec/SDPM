@@ -21,7 +21,7 @@ sys.path.append(os.path.join(PROJECT_ROOT,PROJECT_ROOT, 'libs'))
 
 SECRET_KEY = 'qsgco99_(zziss%lie91lfw$34z#)t8rg)ek+_@=eustbt!-xg'
 
-ON_HEROKU = os.environ.has_key('DATABASE_URL',None)
+ON_HEROKU = os.environ.has_key('DATABASE_URL')
 
 from config import *
 from installed_apps import *
