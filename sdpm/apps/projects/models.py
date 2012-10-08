@@ -8,7 +8,6 @@
     :copyright: (c) 2012 by Arruda.
 """
 from django.db import models
-from model_utils import Choices
 
 from utils.abs_models import Abs_Named_Model
 
