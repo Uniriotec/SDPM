@@ -47,7 +47,7 @@ class ProjectMember(models.Model):
         app_label = 'projects'
     
     def __unicode__(self):
-        return "%s (%s - %s) " % (self.member.user.username, self.enterprise.name, self.member_type) 
+        return "%s (%s - %s) " % (self.member.user.username, self.project.enterprise.name, self.member.MEMBER_TYPE[self.member.member_type][1]) 
     
     
     
