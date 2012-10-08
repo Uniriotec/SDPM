@@ -22,8 +22,6 @@ sys.path.append(os.path.join(PROJECT_ROOT,PROJECT_ROOT, 'libs'))
 SECRET_KEY = 'qsgco99_(zziss%lie91lfw$34z#)t8rg)ek+_@=eustbt!-xg'
 
 ON_HEROKU = os.environ.has_key('DATABASE_URL')
-print "on_heroku"
-print ON_HEROKU
 
 from config import *
 from installed_apps import *
@@ -33,7 +31,7 @@ NO_DEPRECATION_WARNINGS=False
 if not ON_HEROKU:
     NO_DEPRECATION_WARNINGS=True
     from env_dev import *
-else:
+else:    
     from env_prod import *
 
 if NO_DEPRECATION_WARNINGS:
