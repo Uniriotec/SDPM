@@ -17,6 +17,23 @@ from django.utils.translation import ugettext_lazy as _
 from model_utils import Choices
 
 from utils.abs_models import Abs_Named_Model
+
+        
+class TransactionTypeAwareManager(models.Manager):
+    """
+    Manager for Transaction that knows how to deal with the credit and debit proxies
+    """
+    def __init__(self, type=None, *args, **kwargs):
+        super(TransactionTypeAwareManager, self).__init__(*args, **kwargs)
+        self.type = type
+    
+    def get_query_set(self):
+        qq = super(TransactionTypeAwareManager, self).get_query_set()
+        if self.type:
+            qq = qq.filter(transaction_type=self.type)
+            
+        return qq
+    
     
 class FinancialTransaction(Abs_Named_Model):
     """Represents a financial transaction:
@@ -40,9 +57,36 @@ class FinancialTransaction(Abs_Named_Model):
     
     transaction_type = models.CharField(_('Transaction Type'), choices=TRANSACTION_TYPE, default=TRANSACTION_TYPE.debit)
     
+  
+    objects = TransactionTypeAwareManager()  
+    class Meta:
+        app_label = 'finances'
+    
+    
+class DebitTransaction(FinancialTransaction):
     
     class Meta:
         app_label = 'finances'
+        prox = True
+        
+    objects = TransactionTypeAwareManager(type=FinancialTransaction.TRANSACTION_TYPE.debit)
+
+    def save(self, *args, **kwargs):
+        self.transaction_type = FinancialTransaction.TRANSACTION_TYPE.debit
+        return super(CreditTransaction, self).save(*args, **kwargs)
+    
+class CreditTransaction(FinancialTransaction):
+    
+    class Meta:
+        app_label = 'finances'
+        prox = True
+        
+    objects = TransactionTypeAwareManager(type=FinancialTransaction.TRANSACTION_TYPE.credit)
+
+    def save(self, *args, **kwargs):
+        self.transaction_type = FinancialTransaction.TRANSACTION_TYPE.credit
+        return super(CreditTransaction, self).save(*args, **kwargs)
+    
     
     
 class TransactionParcel(models.Model):
@@ -58,6 +102,7 @@ class TransactionParcel(models.Model):
     
     class Meta:
         app_label = 'finances'
+        ordering = ['date',]
     
     def __unicode__(self):
         return "% - %  - %s " % (self.transaction, self.date, self.value)
