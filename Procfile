@@ -1,2 +1,2 @@
-web: python manager.py runserver
+web: python sdpm/manager.py runserver
 
