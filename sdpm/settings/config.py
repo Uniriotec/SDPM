@@ -61,3 +61,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 
 )
+
+AUTHENTICATION_BACKENDS = ( 
+        'user_backends.email_username.EmailOrUsernameModelBackend',
+        'django.contrib.auth.backends.ModelBackend',
+)
