@@ -10,5 +10,6 @@ django-annoying
 django-model-utils==1.1.0   ## model defining utils
 
 #heroku
-dj-database-url
+dj-database-url==0.2.1
 psycopg2
+gunicorn==0.14.6
