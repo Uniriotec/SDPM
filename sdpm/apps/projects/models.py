@@ -7,6 +7,8 @@
     
     :copyright: (c) 2012 by Arruda.
 """
+import datetime
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -65,6 +67,9 @@ class Task(Abs_Named_Model):
     points = models.PositiveIntegerField(_("Points"),default=0)
     
     assigned = models.ForeignKey(ProjectMember,null=True,blank=True, related_name='tasks')
+    
+    start_date = models.DateField(_("Starting Date"), default=datetime.date.today)
+    end_date = models.DateField(_("Ending Date"), default=datetime.date.today)
     
     class Meta:
         app_label = 'projects'
