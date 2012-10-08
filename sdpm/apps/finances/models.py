@@ -56,7 +56,8 @@ class FinancialTransaction(Abs_Named_Model):
     project = models.ForeignKey('projects.Project')
     
     transaction_type = models.CharField(_('Transaction Type'), choices=TRANSACTION_TYPE, default=TRANSACTION_TYPE.debit, max_length=2)
-    
+  
+    description = models.TextField(_('Description'))
   
     objects = TransactionTypeAwareManager()  
     class Meta:
