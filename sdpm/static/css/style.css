@@ -1,0 +1,339 @@
+html{
+    background: #fff0d9;
+    height:100%;
+}
+body {
+    /* width: 100%; */
+    list-style-image: none;
+    list-style: none;
+    list-style-type: none;
+    font-family: helvetica;
+	color: whiteSmoke;
+	text-shadow: black 0px 1px 7px;
+    
+	margin:0;
+	padding:0;
+	text-align:center; /* hack para o IE */	
+	
+    position: relative;
+    /*
+    float: left;
+    position: relative;
+    */
+    min-height:100%;
+    
+    
+    
+}
+
+#wrapper{
+
+	width: 1024px;
+	margin:0 auto;			
+	text-align:left; /* "remédio" para o hack do IE */	
+}
+/**************************** BOX  ****************************/
+
+.box_border {
+
+    /* width: 100%; */
+    background: white; 
+    border-width: 10px;
+	border-color: white;
+	border-style: solid;	
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px #000;
+    
+}
+
+.box_content {    
+    background:  #3879d9;
+    border-width: 10px;
+	border-color: #3879d9;
+	border-style: solid;	
+    border-radius: 10px;
+}
+
+
+/**************************** HEADER  ****************************/
+header {
+    /* box-shadow: 0px 3px 20px #000; */
+    /* top:0; */
+    position: absolute;
+    width: 1000px;
+    height:50px;
+    /*
+    background: #dbdbdb;
+    background: -moz-linear-gradient(#e0e0e0,#d6d6d6);
+    background: -webkit-linear-gradient(#e0e0e0,#d6d6d6);
+    */
+    
+	text-shadow: none;
+}
+
+
+#top_menu{
+   margin:0 auto;
+   float:initial;
+   height:50px;
+}
+
+#top_menu a{
+    text-decoration:none;
+   
+}
+
+
+
+#top_menu h1{
+    /* float: left; */
+    line-height: 50px;
+    margin: 0px;
+    padding: 0 50px 0 56px;
+    color: #FFD;
+    text-shadow: black 0px 1px 7px;
+    font-size: 20pt;
+    font-weight:bold;
+    
+}
+
+#top_menu nav {
+ 
+    position: absolute;
+    bottom:-45%;
+    right:3%;
+    width:auto;
+ 
+    height:26px;
+    margin: 4px;
+    float: right;
+    border-radius: 7px;
+    border: 1px solid #222;
+    /* background: #ABB; */
+    
+    background: #dbdbdb;
+    background: -moz-linear-gradient(#e0e0e0,#d6d6d6);
+    background: -webkit-linear-gradient(#e0e0e0,#d6d6d6);
+    padding: 0 10px;
+    
+}
+#top_menu nav a{
+    text-decoration:none;
+    float: left;
+    padding: 0 10px;
+    color: #555;
+    
+    font-size: 12pt;
+    line-height: 26px;
+    font-weight:bold;
+}
+#top_menu nav a:hover{
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.logo {
+    background: url(/static/images/logo.png) no-repeat;
+
+    background-size: 50px 50px;   
+    
+    /* background: #ABB; */
+    position: absolute;
+}
+
+
+
+
+
+/**************************** CONTAINER  ****************************/
+#container {
+
+	position: absolute;
+	margin-top: 100px;
+    clear: both;
+    
+	z-index: 100;
+	width: 1024px;
+}
+
+/**************************** SIDE  ****************************/
+#side {
+
+	text-shadow: none;
+	position: relative;
+	float:left;
+	width: 200px;
+    /* clear: both; */
+}
+
+
+/********************************-OPTIONS-********************************/
+
+.adjust_height {
+	min-height: 530px;
+}
+
+.opt_menu {
+
+    text-decoration:none;
+    
+	
+    text-shadow: none;
+    
+/*
+	margin-bottom: 10px;
+    height:35px;
+    border-left:2px solid rgba(0,0,0,0.3);
+    float: right;
+ */ 
+ 
+/*
+    position: absolute;
+    bottom:-45%;
+    right:3%;
+*/ 
+    
+}
+
+.opt_menu a, button{
+    text-decoration:none;
+    width:auto;
+ 
+    height:26px;
+    margin: 4px;
+    border-radius: 7px;
+    border: 1px solid #222;
+    
+    background: #dbdbdb;
+    background: -moz-linear-gradient(#e0e0e0,#d6d6d6);
+    background: -webkit-linear-gradient(#e0e0e0,#d6d6d6);
+    padding: 0 10px;
+    
+    float: left;
+    padding: 0 10px;
+    color: #555;
+    
+    /*text-shadow: 1px 2px 1px black;*/
+    font-size: 12pt;
+    line-height: 26px;
+    font-weight:bold;
+}
+.opt_menu a:hover, button:hover {
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+}
+
+.opt_right {
+    border-right:2px solid rgba(0,0,0,0.3);
+}
+
+
+
+/**************************** CONTENT  ****************************/
+#content {
+
+	position: relative;
+	float:left;
+	width: 790px;
+	margin-left: 10px;
+	/*
+	margin-bottom: 10px;
+     clear: both; */
+}
+
+
+/**************************** FOOTER  ****************************/
+
+footer {
+
+    clear: both;
+    /* 
+    position: absolute;
+    bottom:0;
+    */
+	width: 1005px;
+	
+	position: relative;
+	float: left;
+	margin-top: 10px;
+}
+
+#footer_content {
+	width: 965px;
+}
+
+/**************************** TOP_CONTENT  ****************************/
+#top_content_wrapper{
+	position: relative;
+	float: left;
+}
+
+/**************************** MAP  ****************************/
+#map_wrapper {
+    position: relative;
+    float: left;    
+	width: 290px;
+}
+
+#map{
+    position: relative;
+	width:32px;
+	height:32px;	
+	border: 1px solid #000; 
+}
+.tile{
+	width:32px;
+	height:32px;
+	/*width:25px !important;
+	height:25px !important;*/
+	float:left;
+	background-color:rgb(255,255,255);
+}
+.occupied{
+	background-color:rgb(170,170,170);
+}
+
+img.player{
+	position: relative;
+    /* position in top left of #tobecovered */
+    top: 0; /* top of #tobecovered */
+    left: 0; /* left of #tobecovered */	
+}
+
+div.player{
+	width:32px;
+	height:32px;
+    /* position in top left of #tobecovered */
+    top: 0; /* top of #tobecovered */
+    left: 0; /* left of #tobecovered */	
+}
+
+/**************************** Interactions  ****************************/
+#interactions_list {
+    position: relative;
+    float: left;
+    margin-left: 35px;
+	padding-left: 12px;
+    border-left:2px solid rgba(0,0,0,0.3);    
+	min-height: 350px;
+	
+	width: 400px;
+}
+
+/**************************** BOT_CONTENT  ****************************/
+#bot_content_wrapper{
+	position: relative;
+	float: left;
+	border-top: 2px solid rgba(0, 0, 0, 0.3);
+	margin-top: 10px;
+	padding-top: 10px;
+	width: 748px;
+}
+.teste{
+		background-image: url('/media/sprites/def_test_32.png');
+        background-position: -64px 0px;
+        background-repeat: no-repeat;
+        width: 32px;
+        height: 32px;
+}
+

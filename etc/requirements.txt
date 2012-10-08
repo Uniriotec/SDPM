@@ -1,0 +1,10 @@
+Django==1.3.3
+django-extensions
+
+bpython
+yolk
+PyYaml
+django-annoying
+
+
+django-model-utils==1.1.0   ## model defining utils

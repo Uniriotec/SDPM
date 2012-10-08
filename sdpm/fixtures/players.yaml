@@ -1,0 +1,3 @@
+- fields: {rpg: 1, user: 2}
+  model: accounts.player
+  pk: 1

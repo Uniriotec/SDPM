@@ -1,0 +1,34 @@
+{% extends "util/base.html"%}
+{% block 'body-content' %}
+	{% if request.user.is_authenticated %}	
+		<h1>Wellcome back {{request.user.name}}!</h1>	
+		<h2>Here are your current RPGs:</h2>
+		{% for player in request.user.players.all %}
+	        <a href="{% url show_rpg player.rpg.pk %}" >{{player.rpg}} </a>
+		{% endfor %}
+	        
+	{% else %} 
+		<h1>Wellcome to My Own Tale!</h1>	
+		<h2>What's My Own Tale about?</h2>
+		<p>My Own Tale is a original way of creating your own RPG browser games.</br>
+		The main concept is to allow RPG players and Masters to get along and have fun,</br>
+		so we try at best to keep RPG Table game.</br>
+		</p>
+		
+		<p>
+			The main difference between other RPG Browser games is that you'll have a map, and all the time you are interactin with it, even when you are</br>
+			buying a potion or attacking a monster, no more: "Click this link and go to town, kill the mosters, go back and read the report".</br>
+		</p>
+		
+		<p>
+			Also it has some very easy RPG creation interface, for those who prefer to create the adventures but don't understand much of programming to do it. </br>
+			But, even with the user-friendly interface, if you want to add more elaborated stuff in the gameplay, you can change the scripts of your RPG, or even create your own!</br>
+		</p>	
+		
+		<p>
+			What are you waiting for?!</br>
+			Register now and Adventure in Your Own Tale.
+		</p>
+	{% endif %}
+	
+{% endblock %}

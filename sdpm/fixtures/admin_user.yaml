@@ -1,0 +1,15 @@
+- fields:
+    date_joined: 2012-06-03 17:46:48.662820
+    email: mot@mot.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: true
+    is_superuser: true
+    last_login: 2012-06-03 17:46:48.662820
+    last_name: ''
+    password: sha1$30158$6a32ffa1f000059b137674ab3e20e43e3d6babf9
+    user_permissions: []
+    username: mot
+  model: auth.user
+  pk: 1

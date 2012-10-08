@@ -1,0 +1,54 @@
+{% extends "util/esqueleto.html"%}
+
+{% block 'css-extras' %}
+	<link  rel='stylesheet' media='all'  type='text/css' href="{{ STATIC_URL }}css/style.css">
+{% endblock %}
+
+{% block 'js-imports' %}
+{% endblock %}
+
+{% block 'jquery-docready' %}
+{{ block.super }}
+{% endblock %}
+
+{% block 'body-header' %}
+	<div class="box_border">
+		<div id='top_menu' class="box_content clearfix" >
+			{% block 'header-logo' %}
+	 			{% include "util/header.html" %} 
+	 
+			{% endblock %}
+		</div>  
+	</div>  
+{% endblock %}
+
+
+
+{% block 'body-side' %}
+	<div id="side" >
+		<div class="box_border">
+			<div class="box_content clearfix"> 
+				{% block 'side-options' %} 
+		 			{% include "util/float-lateral.html" %} 
+				{% endblock %}
+		    </div>
+			
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block 'body-main' %}
+	 <div id='content'>
+		<div class="box_border">
+			<div class="box_content clearfix"> 
+				{% block 'body-content' %}
+				{% endblock %}
+		 	</div>
+		 </div>
+	 </div>
+{% endblock %}
+
+{% block 'body-footer' %}
+     {% include "util/footer.html" %} 
+{% endblock %}

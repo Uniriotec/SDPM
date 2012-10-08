@@ -1,0 +1,15 @@
+- fields:
+    date_joined: 2012-09-18 21:58:26.160010
+    email: ''
+    first_name: 'usu'
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2012-09-18 21:58:26.160002
+    last_name: ''
+    password: sha1$7c11c$78b7def06e6b98093090f65bf6e049c946a93198
+    user_permissions: []
+    username: usu
+  model: auth.user
+  pk: 2
