@@ -60,6 +60,12 @@ class Task(Abs_Named_Model):
     
     status = models.CharField(_('Status'), choices=STATUS, default=STATUS.new, max_length=2)
     
+    project = models.ForeignKey(Project,related_name='tasks')
+    
+    points = models.PositiveIntegerField(_("Points"),default=0)
+    
+    assigned = models.ForeignKey(ProjectMember,null=True,blank=True, related_name='tasks')
+    
     class Meta:
         app_label = 'projects'
-    
+        
