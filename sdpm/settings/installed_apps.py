@@ -14,6 +14,7 @@ INSTALLED_APPS = (
 
 #apps
     'enterprises',
+    'projects',
 #libs
     'html5_boilerplate',
     'utils',
