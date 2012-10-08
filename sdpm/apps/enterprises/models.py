@@ -32,6 +32,9 @@ class EnterpriseMember(models.Model):
     
     member_type = models.IntegerField(choices=MEMBER_TYPE, default=MEMBER_TYPE.member)
     
+    class Meta:
+        app_label = 'enterprises'
+
     def __unicode__(self):
         return "% (% - %) " % (self.user.username, self.enterprise.name, self.member_type) 
     
