@@ -1,1 +1,1 @@
-web: gunicorn sdpm.wsgi -b 0.0.0.0:$PORT
+web: python sdpm/manage.py run_gunicorn -b "0.0.0.0:$PORT" -w 3
