@@ -4,7 +4,7 @@ SITE_ID = 1
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-SERVE_MEDIA = False
+SERVE_MEDIA = True
 
 DATABASES = {
              'default': dj_database_url.config(default='postgres://localhost')
