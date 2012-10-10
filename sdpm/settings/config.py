@@ -27,7 +27,7 @@ ROOT_URLCONF = 'urls'
 MEDIA_ROOT = LOCAL('media') 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = LOCAL('static')
+STATIC_ROOT = LOCAL('static_root')
 
 STATIC_URL = '/static/'
 
