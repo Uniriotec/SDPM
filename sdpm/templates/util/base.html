@@ -19,27 +19,14 @@
 
 
 {% block 'body-side' %}
-	<div id="side" >
-		<div class="box_border">
-			<div class="box_content clearfix"> 
-				{% block 'side-options' %} 
-		 			{% include "util/float-lateral.html" %} 
-				{% endblock %}
-		    </div>
-			
-		</div>
-	</div>
+		{% include "util/float-lateral.html" %} 
 {% endblock %}
 
 
 {% block 'body-main' %}
-	 <div id='content'>
-		<div class="box_border">
-			<div class="box_content clearfix"> 
-				{% block 'body-content' %}
-				{% endblock %}
-		 	</div>
-		 </div>
+	 <div id='content' class='adjust_height'>
+			{% block 'body-content' %}
+			{% endblock %}
 	 </div>
 {% endblock %}
 
