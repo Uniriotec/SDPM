@@ -1,5 +1,5 @@
 html{
-    background: #fff0d9;
+    background: white;
     height:100%;
 }
 body {
@@ -8,9 +8,11 @@ body {
     list-style: none;
     list-style-type: none;
     font-family: helvetica;
+    
+    /*
 	color: whiteSmoke;
 	text-shadow: black 0px 1px 7px;
-    
+    */
 	margin:0;
 	padding:0;
 	text-align:center; /* hack para o IE */	
@@ -26,13 +28,21 @@ body {
     
 }
 
+#wrapper{
+
+	width: 1024px;
+	margin:0 auto;			
+	text-align:left; /* "remédio" para o hack do IE */	
+}
+
 /**************************** HEADER  ****************************/
 header {
     /* box-shadow: 0px 3px 20px #000; */
-    /* top:0; */
     position: absolute;
     width: 1000px;
     height:50px;
+    border-bottom: 1px solid #222;
+    
     /*
     background: #dbdbdb;
     background: -moz-linear-gradient(#e0e0e0,#d6d6d6);
@@ -49,7 +59,58 @@ header {
    height:50px;
 }
 
+#top_menu nav {
+    position: absolute;
+    right:0;
+    bottom:0;
+    
+    width:auto;
+ 
+    height:26px;
+    float: right;
+    border-left: 1px solid #222;
+    
+    padding: 0 0 0 38px;
+    
+}
+#top_menu h1{
+    /* float: left; */
+    line-height: 50px;
+    margin: 0px;
+    padding: 0 50px 0 56px;
+    color: #FFD;
+    text-shadow: black 0px 1px 7px;
+    font-size: 20pt;
+    font-weight:bold;
+    
+}
+#top_menu nav a{
+    text-decoration:none;
+    float: right;
+    padding: 0 10px;
+    color: #555;
+    
+    
+    font-size: 12pt;
+    line-height: 26px;
+    font-weight:bold;
+}
+#top_menu nav a:hover{
+	/*
+    color: #fff;
+    text-shadow: 1px 1px 1px black;
+    */
+    border-top: 1px solid #222;
+}
 
+.logo {
+    background: url(/static/images/logo.png) no-repeat;
+
+    background-size: 50px 50px;   
+    
+    /* background: #ABB; */
+    position: absolute;
+}
 
 /**************************** CONTAINER  ****************************/
 #container {
@@ -69,6 +130,7 @@ header {
 	position: relative;
 	float:left;
 	width: 200px;
+    border-right: 1px solid #222;
     /* clear: both; */
 }
 
@@ -91,6 +153,7 @@ header {
 
 footer {
 
+    border-top: 1px solid #222;
     clear: both;
     /* 
     position: absolute;
