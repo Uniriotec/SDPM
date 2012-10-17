@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
                        
      url(r'^admin/', include(admin.site.urls)),
+     url(r'^enterprise/', include('enterprises.urls')),
      url(r'^$', direct_to_template, {'template': 'index.html'}, name='index'),
 )
 

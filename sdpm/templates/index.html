@@ -1,5 +1,6 @@
 {% extends "util/base.html"%}
 {% block 'body-content' %}
+
 	{% if request.user.is_authenticated %}	
 		<h1>Wellcome back {{request.user.name}}!</h1>	
 	        

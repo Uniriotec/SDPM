@@ -62,6 +62,16 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # default template context processors
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',    
+    'django.core.context_processors.request',
+    
+)
 AUTHENTICATION_BACKENDS = ( 
         'user_backends.email_username.EmailOrUsernameModelBackend',
         'django.contrib.auth.backends.ModelBackend',
