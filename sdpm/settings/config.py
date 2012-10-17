@@ -59,10 +59,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = ( 
         'user_backends.email_username.EmailOrUsernameModelBackend',
         'django.contrib.auth.backends.ModelBackend',
 )
+
+DEBUG_TOOLBAR_CONFIG = {
+'INTERCEPT_REDIRECTS':False,
+}

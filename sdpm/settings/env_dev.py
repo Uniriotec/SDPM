@@ -15,3 +15,6 @@ DATABASES = {
 }
 
 
+
+#settings this for debug tools
+INTERNAL_IPS = ('127.0.0.1',)

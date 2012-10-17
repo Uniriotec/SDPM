@@ -11,6 +11,7 @@ INSTALLED_APPS = (
 
     'django_extensions', 
     'model_utils', 
+    'debug_toolbar',
 
 #apps
     'enterprises',
