@@ -14,13 +14,13 @@ urlpatterns = patterns('',
 )
 
 
-#urlpatterns += patterns('django.contrib.auth.views',               
-#
-#    url(r'^login/$', 'login', {'template_name': 'user/login.html',}, name='login'),  
-#    url(r'^logout/$', 'logout', {'template_name': 'user/login.html'},name='logout'),
-#        
-#
-#)
+urlpatterns += patterns('django.contrib.auth.views',               
+
+    url(r'^login/$', 'login', {'template_name': 'users/login.html',}, name='login'),  
+    url(r'^logout/$', 'logout', {'template_name': 'users/login.html'},name='logout'),
+        
+
+)
 
 if settings.SERVE_MEDIA:
 #    urlpatterns += patterns('',
