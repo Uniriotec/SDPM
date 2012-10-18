@@ -71,6 +71,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',    
     'django.core.context_processors.request',
     
+    #sdpm    
+    'context_processors.add_logged_member',
+    
 )
 AUTHENTICATION_BACKENDS = ( 
         'user_backends.email_username.EmailOrUsernameModelBackend',
