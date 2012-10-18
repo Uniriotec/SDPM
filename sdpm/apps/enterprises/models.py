@@ -40,4 +40,7 @@ class EnterpriseMember(models.Model):
     def __unicode__(self):
         return "%s (%s - %s) " % (self.user.email, self.enterprise.name, self.MEMBER_TYPE[self.member_type][1]) 
     
+    def written_member_type(self):
+        "returns the written member type instead of a number"
+        return self.MEMBER_TYPE[self.member_type][1]
     

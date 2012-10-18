@@ -1,9 +1,16 @@
 {% extends "util/base.html"%}
 {% block 'body-content' %}
 
-	<h1>Members for {{enterprise.name}}</h1>	
-	{% for member in enterprise.members.all %}
-		{{member}}
-	{% endfor %}
+	<h1>Members of {{enterprise.name}}</h1>	
+	<ul>
+		{% for member in enterprise.members.all %}
+			<li>
+				{{member.user.email}} <span>{{member.written_member_type}}</span>
+			</li>
+			
+		{% endfor %}
+	</ul>
+	
+	<a href="{% url add_member enterprise.pk %}">Add Member</a>
 	
 {% endblock %}
