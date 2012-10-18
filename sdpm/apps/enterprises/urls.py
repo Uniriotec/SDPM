@@ -8,7 +8,9 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('enterprises.views',
 #    url(r'^$', 'index'),
-#    url(r'^exibir/(?P<template_id>\d+)/$', 'exibir',name='exibir_avaliacao'),    ,     
-    url(r'^(?P<enterprise_id>\d+)/add_member/$', 'add_member', name='add_member'),     
+#    url(r'^exibir/(?P<template_id>\d+)/$', 'exibir',name='exibir_avaliacao'),    ,  
+   
+    url(r'^(?P<enterprise_id>\d+)/members/$', 'manage_members', name='manage_members'),     
+    url(r'^(?P<enterprise_id>\d+)/members/add/$', 'add_member', name='add_member'),     
     url(r'^register/$', 'register',name='register_enterprise'),  
 )

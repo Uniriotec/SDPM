@@ -1,11 +1,13 @@
 <div id="side" >			
 	<nav class="opt_menu adjust_height">
-		<ul>
-			<li><a href="#" >Opção 1</a></li>
-			<li><a href="#" >Opção 2</a></li>
-			<li><a href="#">Opção 3</a></li>
-			<li><a href="#">Opção Grande 4</a></li>
-			
-		</ul>
+		{% if logged_member %}
+			<ul>
+				<li><a href="{% url manage_members logged_member.enterprise.pk %}" >Members</a></li>
+				<li><a href="#" >Opção 2</a></li>
+				<li><a href="#">Opção 3</a></li>
+				<li><a href="#">Opção Grande 4</a></li>
+				
+			</ul>
+		{% endif %}
 	</nav>
 </div>

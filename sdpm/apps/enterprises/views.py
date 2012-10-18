@@ -7,7 +7,7 @@ from annoying.decorators import render_to
 
 from django.contrib.auth.models import User
 
-from utils.decorators import enterprise_owner_required
+from utils.decorators import enterprise_member_required
 
 from enterprises.forms import RegistrationForm, NewEnterpriseMemberForm
 
@@ -50,7 +50,7 @@ def register(request):
     return locals()
 
 @login_required
-@enterprise_owner_required
+@enterprise_member_required(owner=True)
 @render_to('enterprises/add_member.html')
 def add_member(request,enterprise_id):
     """
@@ -87,4 +87,15 @@ def add_member(request,enterprise_id):
 
     return locals()
 
-    
+
+@login_required
+@enterprise_member_required()
+@render_to('enterprises/members_list.html')
+def manage_members(request,enterprise_id):
+    """
+    Show other options to manage the enterprise, like:
+    Add members and change their type
+    """
+   
+    enterprise = get_object_or_404(Enterprise,pk=enterprise_id)
+    return locals()

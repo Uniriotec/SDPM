@@ -1,0 +1,9 @@
+{% extends "util/base.html"%}
+{% block 'body-content' %}
+
+	<h1>Members for {{enterprise.name}}</h1>	
+	{% for member in enterprise.members.all %}
+		{{member}}
+	{% endfor %}
+	
+{% endblock %}

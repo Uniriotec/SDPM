@@ -38,6 +38,6 @@ class EnterpriseMember(models.Model):
         app_label = 'enterprises'
 
     def __unicode__(self):
-        return "%s (%s - %s) " % (self.user.username, self.enterprise.name, self.MEMBER_TYPE[self.member_type][1]) 
+        return "%s (%s - %s) " % (self.user.email, self.enterprise.name, self.MEMBER_TYPE[self.member_type][1]) 
     
     

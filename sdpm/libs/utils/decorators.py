@@ -13,18 +13,30 @@ from functools import wraps
 from django.shortcuts import redirect, get_object_or_404
 
 
-def enterprise_owner_required(function):
-    """
-    Check if the user logged in is a owner of the given enterprise(enterprise_id kwarg)
-    """
-    from enterprises.models import Enterprise, EnterpriseMember
-    @wraps(function)
-    def wrapper(request, *args, **kwargs):
-        enterprise_id =  kwargs.get('enterprise_id')
-        enterprise = get_object_or_404(Enterprise, pk=enterprise_id)
-        
-        member = get_object_or_404(EnterpriseMember, enterprise__pk=enterprise_id, user=request.user,member_type=EnterpriseMember.MEMBER_TYPE.owner)
-                
-        return function(request, *args, **kwargs)       
+
+def enterprise_member_required(owner=False):
     
-    return wrapper
+    def requirement_check(function):
+        """
+        Check if the user logged in is a owner of the given enterprise(enterprise_id kwarg)
+        """
+        from enterprises.models import Enterprise, EnterpriseMember
+        @wraps(function)
+        def wrapper(request, *args, **kwargs):
+            enterprise_id =  kwargs.get('enterprise_id')
+            enterprise = get_object_or_404(Enterprise, pk=enterprise_id)
+            
+            get_kwargs  = {
+                           'enterprise__pk': enterprise_id,
+                           'user':request.user,                           
+                           }
+            if owner:
+                get_kwargs['member_type'] = EnterpriseMember.MEMBER_TYPE.owner
+                
+            member = get_object_or_404(EnterpriseMember, **get_kwargs)
+                    
+            return function(request, *args, **kwargs)       
+        
+        return wrapper
+    
+    return requirement_check
