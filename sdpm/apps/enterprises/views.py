@@ -2,11 +2,12 @@
 
 from django.contrib.auth import login
 from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
 
 from django.contrib.auth.models import User
 
-from enterprises.forms import RegistrationForm
+from enterprises.forms import RegistrationForm, NewEnterpriseMemberForm
 
 from enterprises.models import Enterprise, EnterpriseMember
 
@@ -16,9 +17,7 @@ def register(request):
         return redirect('/')
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-        print "check"
         if form.is_valid(): 
-            print "valid"
             #Create the user
             owner_email = form.cleaned_data.get('owner_email')
             passwd = form.cleaned_data.get('password1')
@@ -42,10 +41,49 @@ def register(request):
             
             #logs the new user
             login(request,user)
-            print user.is_authenticated()
             return redirect('/')
     else:
         form = RegistrationForm()
 
     return locals()
 
+
+@login_required
+@render_to('enterprises/add_member.html')
+def add_member(request,enterprise_id):
+    """
+    Add a new member to a given enterprise
+    """
+    
+    enterprise = get_object_or_404(Enterprise,pk=enterprise_id)
+    
+    if request.method == 'POST':
+        form = NewEnterpriseMemberForm(request.POST)
+        if form.is_valid(): 
+            
+            #Create the user
+            owner_email = form.cleaned_data.get('member_email')
+            passwd = form.cleaned_data.get('password1')
+            
+            user = User(email=owner_email)
+            user.set_password(passwd)            
+            user.save()
+            user.username = user.pk 
+            user.backend='user_backends.email_username.EmailOrUsernameModelBackend'
+            user.save()
+            
+            
+            
+            #create the enterprise member
+            ep_member = form.save(commit=False)#(user=user,enterprise=ep)
+            ep_member.user = user
+            ep_member.enterprise = enterprise
+            ep_member.save()
+            
+            return redirect('/')
+    else:
+        form = NewEnterpriseMemberForm()
+
+    return locals()
+
+    

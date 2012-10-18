@@ -2,7 +2,7 @@
 {% block 'body-content' %}
 
 	{% if request.user.is_authenticated %}	
-		<h1>Wellcome back {{request.user.name}}!</h1>	
+		<h1>Wellcome back {{request.user.email}}!</h1>	
 	        
 	{% else %} 
 		<h1>Wellcome to the Super Duper Project Manager!</h1>	

@@ -1,0 +1,11 @@
+{% extends "util/base.html"%}
+{% block 'body-content' %}
+
+	<h1>Add a new member to: {{enterprise.name}}</h1>	
+	<form action="{% url add_member enterprise.pk %}" method="post" id="member-form">
+		{% csrf_token %}
+		{{ form.as_ul }}
+		<input type="submit" value="Add" />
+	</form>
+	
+{% endblock %}
