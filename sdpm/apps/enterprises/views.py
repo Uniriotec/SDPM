@@ -7,6 +7,8 @@ from annoying.decorators import render_to
 
 from django.contrib.auth.models import User
 
+from utils.decorators import enterprise_owner_required
+
 from enterprises.forms import RegistrationForm, NewEnterpriseMemberForm
 
 from enterprises.models import Enterprise, EnterpriseMember
@@ -47,8 +49,8 @@ def register(request):
 
     return locals()
 
-
 @login_required
+@enterprise_owner_required
 @render_to('enterprises/add_member.html')
 def add_member(request,enterprise_id):
     """
