@@ -75,7 +75,6 @@ def add_member(request,enterprise_id):
             user.save()
             
             
-            
             #create the enterprise member
             ep_member = form.save(commit=False)#(user=user,enterprise=ep)
             ep_member.user = user
