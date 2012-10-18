@@ -44,3 +44,7 @@ class EnterpriseMember(models.Model):
         "returns the written member type instead of a number"
         return self.MEMBER_TYPE[self.member_type][1]
     
+    def is_owner(self):
+        "return if is owner or not"
+        return self.member_type is self.MEMBER_TYPE.owner
+        
