@@ -68,8 +68,8 @@ class Task(Abs_Named_Model):
     
     assigned = models.ForeignKey('enterprises.EnterpriseMember',null=True,blank=True, related_name='tasks')
     
-    start_date = models.DateField(_("Starting Date"), default=datetime.date.today)
-    end_date = models.DateField(_("Ending Date"), default=datetime.date.today)
+    start_date = models.DateField(_("Starting Date"), default=datetime.date.today, null=True, blank=True)
+    end_date = models.DateField(_("Ending Date"), default=datetime.date.today, null=True, blank=True)
     
     class Meta:
         app_label = 'projects'

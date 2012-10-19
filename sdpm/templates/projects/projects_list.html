@@ -5,7 +5,7 @@
 	<ul>
 		{% for project in projects %}
 			<li>
-				{{ project.name }}
+				{{ project.name }} <span><a href="{% url add_task project.pk %}">Add Task</a></span>
 			</li>
 			
 		{% endfor %}

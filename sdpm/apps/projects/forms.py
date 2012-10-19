@@ -44,10 +44,10 @@ class NewTaskForm(forms.ModelForm):
     
     class Meta:
         model = Task
-        exclude = ('p','members')
+        exclude = ('project',)
     
     def __init__(self, project, *args, **kwargs):
         super(NewTaskForm, self).__init__(*args, **kwargs)
-        self.fields['members'].queryset = enterprise.members.all()    
+        self.fields['assigned'].queryset = project.enterprise.members.all()    
 
 #    
