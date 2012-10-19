@@ -21,11 +21,11 @@ class NewProjectForm(forms.ModelForm):
     
     class Meta:
         model = Project
-        exclude = ('enterprise',)
+        exclude = ('enterprise','members')
         
-    def __init__(self, enterprise, *args, **kwargs):
-        super(NewProjectForm, self).__init__(*args, **kwargs)
-        self.fields['members'].queryset = enterprise.members.all()    
+#    def __init__(self, enterprise, *args, **kwargs):
+#        super(NewProjectForm, self).__init__(*args, **kwargs)
+#        self.fields['members'].queryset = enterprise.members.all()    
 
 class NewProjectMemberForm(forms.ModelForm):
     "inline"
@@ -33,4 +33,8 @@ class NewProjectMemberForm(forms.ModelForm):
     class Meta:
         model = ProjectMember
     
+    def __init__(self, enterprise, *args, **kwargs):
+        super(NewProjectForm, self).__init__(*args, **kwargs)
+        self.fields['members'].queryset = enterprise.members.all()    
+
 #    

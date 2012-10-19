@@ -27,24 +27,17 @@ def add_project(request):
     
     enterprise = Enterprise.get_from_user_or_404(request.user)
     
-#    formsetMembersInline=inlineformset_factory(Project, ProjectMember,extra=1)
     if request.method == 'POST':
-        form = NewProjectForm(enterprise,request.POST)
+        form = NewProjectForm(request.POST)
         if form.is_valid(): 
             new_project = form.save(commit=False)
             new_project.enterprise = enterprise
             
-#            projectMemberForms=formsetMembersInline(request.POST,instance=new_project)
-#                
-#            if projectMemberForms.is_valid():
-#                new_project.save()
-#                projectMemberForms.save()      
             new_project.save()     
-            form.save_m2m()
             
             return redirect('/')
     else:
-        form = NewProjectForm(enterprise)
-#        projectMemberForms = formsetMembersInline()
+        form = NewProjectForm()
+
 
     return locals()
