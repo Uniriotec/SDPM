@@ -59,17 +59,6 @@ def add_project(request):
 
 @login_required
 @enterprise_member_required()
-@render_to('projects/tasks/project_tasks_list.html')
-def manage_project_tasks(request,project_id):
-    """
-    List the tasks for this project
-    """
-    project = get_object_or_404(Project,pk=project_id)    
-    
-    return  locals()
-
-@login_required
-@enterprise_member_required()
 @render_to('projects/tasks/add_task.html')
 def add_task(request,project_id):
     """
@@ -102,19 +91,15 @@ def manage_tasks(request):
     List the tasks using some parameters in get
     """
     member = get_object_or_404(EnterpriseMember, user=request.user)
-    tasks = member.tasks.filter()
+    
     
     filter_params = {}
-    filter_form = TaskFilterForm(member,request.GET)
     
-    if request.GET == {}:
-        pass
+    filter_form = TaskFilterForm(member,request.GET)
+        
     
     
     if filter_form.is_valid():        
-        order_by = filter_form.cleaned_data.get('order',None)
-        if order_by:
-            tasks = tasks.order_by(order_by)
-    
-    
+        tasks = filter_form.get_tasks()
+        
     return locals()

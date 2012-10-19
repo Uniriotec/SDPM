@@ -13,7 +13,6 @@ urlpatterns = patterns('projects.views',
     url(r'^$', 'manage_projects', name='manage_projects'),     
     url(r'^add/$', 'add_project', name='add_project'),     
     
-    url(r'^(?P<project_id>\d+)/tasks/$', 'manage_project_tasks',name='manage_project_tasks'),  
     url(r'^(?P<project_id>\d+)/tasks/add_task/$', 'add_task',name='add_task'),    
 )
 

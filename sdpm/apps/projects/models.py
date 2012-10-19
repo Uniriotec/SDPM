@@ -74,3 +74,20 @@ class Task(Abs_Named_Model):
     class Meta:
         app_label = 'projects'
         
+        
+    
+    def save(self, *args, **kwargs):
+        """
+        If the task is assigned to someone, then add this member to the project members
+        """
+        #if tehere is someone assingned
+        if self.assigned:
+            #if the project of this task is not in the assigned project list
+            if not self.project in self.assigned.projects.all():
+                #add the project to the assigned projects
+                self.assigned.projects.add(self.project)
+                self.assigned.save()
+                
+        super(Task, self).save(*args, **kwargs)
+        
+        
