@@ -1,20 +1,11 @@
 {% extends "util/base.html"%}
 {% block 'body-content' %}
 
-	<h1>Task List</h1>
-	<div>
-		<h2>Filters:</h2>
-		<form action="{% url manage_tasks %}" method="get">
-			{{ filter_form.as_ul}}
-			
-			<input type="submit" value="Filter" />
-		</form>
-	</div>	
+	<h1>Tasks of project {{project.name}}</h1>	
 	<ul>
-		{% for task in tasks %}
+		{% for task in project.tasks.all %}
 			<li>
 				{{task.name}}
-				 <span>{{task.project}} points</span>
 				 <span>{{task.points}} points</span>
 				 {% if task.assigned  %}
 			  		<span>({{task.assigned.user.email}})</span>
@@ -25,5 +16,6 @@
 			
 		{% endfor %}
 	</ul>
+	<a href="{% url add_task project.pk %}">Add new Task</a>
 	
 {% endblock %}

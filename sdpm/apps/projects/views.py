@@ -13,7 +13,7 @@ from utils.decorators import enterprise_member_required
 
 from enterprises.models import Enterprise, EnterpriseMember
 
-from projects.forms import NewProjectForm, NewTaskForm
+from projects.forms import NewProjectForm, NewTaskForm, TaskFilterForm
 from projects.models import Project, Task
 
 
@@ -59,8 +59,8 @@ def add_project(request):
 
 @login_required
 @enterprise_member_required()
-@render_to('projects/tasks/tasks_list.html')
-def manage_tasks(request,project_id):
+@render_to('projects/tasks/project_tasks_list.html')
+def manage_project_tasks(request,project_id):
     """
     List the tasks for this project
     """
@@ -91,4 +91,30 @@ def add_task(request,project_id):
         form = NewTaskForm(project)
 
 
+    return locals()
+
+
+@login_required
+@enterprise_member_required()
+@render_to('projects/tasks/tasks_list.html')
+def manage_tasks(request):
+    """
+    List the tasks using some parameters in get
+    """
+    member = get_object_or_404(EnterpriseMember, user=request.user)
+    tasks = member.tasks.filter()
+    
+    filter_params = {}
+    filter_form = TaskFilterForm(request.GET)
+    
+    if request.GET == {}:
+        pass
+    
+    
+    if filter_form.is_valid():        
+        order_by = filter_form.cleaned_data.get('order',None)
+        if order_by:
+            tasks = tasks.order_by(order_by)
+    
+    
     return locals()

@@ -59,7 +59,7 @@ class Task(Abs_Named_Model):
                         ('dg', 'doing', _('Doing')),
                         ('d', 'done', _('Done')),
                     )
-    
+    description = models.TextField(_('Description'), null=True,blank=True)
     status = models.CharField(_('Status'), choices=STATUS, default=STATUS.new, max_length=2)
     
     project = models.ForeignKey(Project,related_name='tasks')

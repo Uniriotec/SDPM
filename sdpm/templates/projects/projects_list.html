@@ -6,7 +6,7 @@
 		{% for project in projects %}
 			<li>
 				{{ project.name }} 
-				<span><a href="{% url manage_tasks project.pk %}">Tasks</a></span>
+				<span><a href="{% url manage_project_tasks project.pk %}">Tasks</a></span>
 			</li>
 			
 		{% endfor %}

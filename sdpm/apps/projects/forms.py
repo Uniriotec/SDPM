@@ -50,4 +50,18 @@ class NewTaskForm(forms.ModelForm):
         super(NewTaskForm, self).__init__(*args, **kwargs)
         self.fields['assigned'].queryset = project.enterprise.members.all()    
 
+
+class TaskFilterForm(forms.Form):
+    "filters parameters for tasks"
+    
+    ORDER_CHOICES = (
+        ('points', _('Points')),
+        ('start_date', _('Start Date')),
+        ('end_date', _('End Date')),
+        ('status',  _('Status')),
+        ('project',  _('Project')),
+    )
+    
+    order = forms.ChoiceField(label=_('Order by'), choices=ORDER_CHOICES,initial='points', required=False)
+#    project = forms.ModelChoiceField(label=_('Project'),  required=False)
 #    
