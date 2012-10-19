@@ -10,7 +10,7 @@ urlpatterns = patterns('enterprises.views',
 #    url(r'^$', 'index'),
 #    url(r'^exibir/(?P<template_id>\d+)/$', 'exibir',name='exibir_avaliacao'),    ,  
    
-    url(r'^(?P<enterprise_id>\d+)/members/$', 'manage_members', name='manage_members'),     
-    url(r'^(?P<enterprise_id>\d+)/members/add/$', 'add_member', name='add_member'),     
+    url(r'^members/$', 'manage_members', name='manage_members'),     
+    url(r'^members/add/$', 'add_member', name='add_member'),     
     url(r'^register/$', 'register',name='register_enterprise'),  
 )

@@ -52,12 +52,11 @@ def register(request):
 @login_required
 @enterprise_member_required(owner=True)
 @render_to('enterprises/add_member.html')
-def add_member(request,enterprise_id):
+def add_member(request):
     """
     Add a new member to a given enterprise
     """
-    
-    enterprise = get_object_or_404(Enterprise,pk=enterprise_id)
+    enterprise = Enterprise.get_from_user_or_404(request.user)
     
     if request.method == 'POST':
         form = NewEnterpriseMemberForm(request.POST)
@@ -91,11 +90,11 @@ def add_member(request,enterprise_id):
 @login_required
 @enterprise_member_required()
 @render_to('enterprises/members_list.html')
-def manage_members(request,enterprise_id):
+def manage_members(request):
     """
     Show other options to manage the enterprise, like:
     Add members and change their type
     """
    
-    enterprise = get_object_or_404(Enterprise,pk=enterprise_id)
+    enterprise = Enterprise.get_from_user_or_404(request.user)
     return locals()

@@ -23,11 +23,10 @@ def enterprise_member_required(owner=False):
         from enterprises.models import Enterprise, EnterpriseMember
         @wraps(function)
         def wrapper(request, *args, **kwargs):
-            enterprise_id =  kwargs.get('enterprise_id')
-            enterprise = get_object_or_404(Enterprise, pk=enterprise_id)
+            enterprise = Enterprise.get_from_user_or_404(request.user)
             
             get_kwargs  = {
-                           'enterprise__pk': enterprise_id,
+                           'enterprise': enterprise,
                            'user':request.user,                           
                            }
             if owner:

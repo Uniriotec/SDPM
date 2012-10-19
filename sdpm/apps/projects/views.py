@@ -19,12 +19,13 @@ from projects.models import Project, ProjectMember
 @login_required
 @enterprise_member_required(owner=True)
 @render_to('projects/add_project.html')
-def add_project(request,enterprise_id):
+def add_project(request):
     """
     Add a new project to a given enterprise
     """
     
-    enterprise = get_object_or_404(Enterprise,pk=enterprise_id)
+    
+    enterprise = Enterprise.get_from_user_or_404(request.user)
     
 #    formsetMembersInline=inlineformset_factory(Project, ProjectMember,extra=1)
     if request.method == 'POST':

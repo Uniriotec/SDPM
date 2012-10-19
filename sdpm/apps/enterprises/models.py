@@ -14,9 +14,23 @@ from model_utils import Choices
 
 from utils.abs_models import Abs_Named_Model
 
+
+
 class Enterprise(Abs_Named_Model):
     "A Enterprise"
     
+    @classmethod
+    def get_from_user_or_404(cls,user):
+        "return the enterprise for the given user or raise a 404 page if there is no member for the user"        
+        from django.http import Http404
+        
+        try:
+            member = EnterpriseMember.objects.get(user=user)
+            EnterpriseMember.objects.get(user=user)
+            return member.enterprise
+        except EnterpriseMember.DoesNotExist:
+            raise Http404('No %s matches the given query.' % EnterpriseMember._meta.object_name)
+        
     class Meta:
         app_label = 'enterprises'
 

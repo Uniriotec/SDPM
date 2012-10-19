@@ -2,7 +2,7 @@
 {% block 'body-content' %}
 
 	<h1>Create a new project for {{enterprise.name}}</h1>	
-	<form action="{% url add_project enterprise.pk %}" method="post" id="project-form">
+	<form action="{% url add_project %}" method="post" id="project-form">
 		{% csrf_token %}
 		{{ form.as_ul }}
 		<input type="submit" value="Create" />

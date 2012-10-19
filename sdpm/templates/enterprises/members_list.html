@@ -11,7 +11,7 @@
 		{% endfor %}
 	</ul>
 	{% if logged_member.is_owner %}
-		<a href="{% url add_member enterprise.pk %}">Add Member</a>
+		<a href="{% url add_member %}">Add Member</a>
 	{% endif %}
 	
 {% endblock %}
