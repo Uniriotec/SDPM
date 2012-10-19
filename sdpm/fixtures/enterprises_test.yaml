@@ -1,0 +1,61 @@
+- fields:
+    date_joined: 2012-10-19 00:39:06.326655
+    email: bla@bla.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2012-10-19 00:47:28.351979
+    last_name: ''
+    password: sha1$9b168$54f22977c77e018f0a6840bf1d016aa5e0d7f9ab
+    user_permissions: []
+    username: '2'
+  model: auth.user
+  pk: 2
+- fields:
+    date_joined: 2012-10-19 00:39:21.266370
+    email: ble@ble.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2012-10-19 00:39:21.266363
+    last_name: ''
+    password: sha1$c347d$62a4a4d65782a413f81f80691a91be39ff763d2c
+    user_permissions: []
+    username: '3'
+  model: auth.user
+  pk: 3
+- fields:
+    date_joined: 2012-10-19 00:47:11.716805
+    email: other@other.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2012-10-19 00:47:12.523029
+    last_name: ''
+    password: sha1$555b4$4935beb494d92f0a717a7baa0fe44291a2bad2e7
+    user_permissions: []
+    username: '4'
+  model: auth.user  
+  pk: 4
+  
+- fields: {name: Blas}
+  model: enterprises.enterprise
+  pk: 1
+- fields: {name: Others}
+  model: enterprises.enterprise
+  pk: 2
+- fields: {enterprise: 1, member_type: 0, user: 2}
+  model: enterprises.enterprisemember
+  pk: 1
+- fields: {enterprise: 1, member_type: 1, user: 3}
+  model: enterprises.enterprisemember
+  pk: 2
+- fields: {enterprise: 2, member_type: 0, user: 4}
+  model: enterprises.enterprisemember
+  pk: 3
