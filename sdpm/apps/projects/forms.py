@@ -63,5 +63,10 @@ class TaskFilterForm(forms.Form):
     )
     
     order = forms.ChoiceField(label=_('Order by'), choices=ORDER_CHOICES,initial='points', required=False)
-#    project = forms.ModelChoiceField(label=_('Project'),  required=False)
+    
+    def __init__(self, member, *args, **kwargs):
+        super(TaskFilterForm, self).__init__(*args, **kwargs)
+        
+        self.fields['project'] = forms.ModelChoiceField(label=_('Project'), queryset=member.projects.all(),  required=False)
+        
 #    

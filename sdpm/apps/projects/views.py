@@ -105,7 +105,7 @@ def manage_tasks(request):
     tasks = member.tasks.filter()
     
     filter_params = {}
-    filter_form = TaskFilterForm(request.GET)
+    filter_form = TaskFilterForm(member,request.GET)
     
     if request.GET == {}:
         pass
