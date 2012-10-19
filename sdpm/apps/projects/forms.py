@@ -28,7 +28,7 @@ class NewProjectForm(forms.ModelForm):
 #        self.fields['members'].queryset = enterprise.members.all()    
 
 class NewProjectMemberForm(forms.ModelForm):
-    "inline"
+    "new project member"
     
     class Meta:
         model = ProjectMember

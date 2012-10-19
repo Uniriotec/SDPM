@@ -28,7 +28,7 @@ class Project(Abs_Named_Model):
     
     """
     
-    enterprise = models.ForeignKey('enterprises.Enterprise')  
+    enterprise = models.ForeignKey('enterprises.Enterprise',related_name='projects')  
     members = models.ManyToManyField('enterprises.EnterpriseMember', related_name="projects", through='ProjectMember') 
        
     points = models.PositiveIntegerField(_("Points"),default=0)

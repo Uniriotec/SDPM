@@ -1,0 +1,17 @@
+{% extends "util/base.html"%}
+{% block 'body-content' %}
+
+	<h1>Projects of {{enterprise.name}}</h1>	
+	<ul>
+		{% for project in projects %}
+			<li>
+				{{ project.name }}
+			</li>
+			
+		{% endfor %}
+	</ul>
+	{% if logged_member.is_owner %}
+		<a href="{% url add_project %}">Add New Project</a>
+	{% endif %}
+	
+{% endblock %}
