@@ -1,0 +1,21 @@
+{% extends "util/base.html"%}
+{% block 'body-content' %}
+
+	<h1>Tasks of project {{project.name}}</h1>	
+	<ul>
+		{% for task in project.tasks.all %}
+			<li>
+				{{task.name}}
+				 <span>{{task.points}} points</span>
+				 {% if task.assigned  %}
+			  		<span>({{task.assigned.user.email}})</span>
+				 {% else %}
+		  			<span>(--)</span>
+				 {% endif%}
+			</li>
+			
+		{% endfor %}
+	</ul>
+	<a href="{% url add_task project.pk %}">Add new Task</a>
+	
+{% endblock %}

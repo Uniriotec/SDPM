@@ -57,6 +57,16 @@ def add_project(request):
     return locals()
 
 
+@login_required
+@enterprise_member_required()
+@render_to('projects/tasks/tasks_list.html')
+def manage_tasks(request,project_id):
+    """
+    List the tasks for this project
+    """
+    project = get_object_or_404(Project,pk=project_id)    
+    
+    return  locals()
 
 @login_required
 @enterprise_member_required()
