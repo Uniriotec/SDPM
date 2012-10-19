@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from projects.models import Project, ProjectMember, Task
+from projects.models import Project,  Task
 
 
 
-class ProjectMemberInline(admin.TabularInline):
-    model = ProjectMember
-    extra = 1
-    min = 1
+#class ProjectMemberInline(admin.TabularInline):
+#    model = ProjectMember
+#    extra = 1
+#    min = 1
 
 class TaskInline(admin.TabularInline):
     model = Task
@@ -15,7 +15,7 @@ class TaskInline(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    inlines = [ProjectMemberInline,TaskInline]
+    inlines = [TaskInline,]#ProjectMemberInline]
     
 
 

@@ -29,7 +29,7 @@ class Project(Abs_Named_Model):
     """
     
     enterprise = models.ForeignKey('enterprises.Enterprise',related_name='projects')  
-    members = models.ManyToManyField('enterprises.EnterpriseMember', related_name="projects", through='ProjectMember') 
+    members = models.ManyToManyField('enterprises.EnterpriseMember', related_name="projects")#, through='ProjectMember') 
        
     points = models.PositiveIntegerField(_("Points"),default=0)
     
@@ -37,17 +37,17 @@ class Project(Abs_Named_Model):
         app_label = 'projects'
     
 
-class ProjectMember(models.Model):
-    "A member of a given Project"
-    
-    member = models.ForeignKey('enterprises.EnterpriseMember')    
-    project = models.ForeignKey(Project)
-    
-    class Meta:
-        app_label = 'projects'
-    
-    def __unicode__(self):
-        return "%s (%s - %s) " % (self.member.user.username, self.project.enterprise.name, self.member.MEMBER_TYPE[self.member.member_type][1]) 
+#class ProjectMember(models.Model):
+#    "A member of a given Project"
+#    
+#    member = models.ForeignKey('enterprises.EnterpriseMember')    
+#    project = models.ForeignKey(Project)
+#    
+#    class Meta:
+#        app_label = 'projects'
+#    
+#    def __unicode__(self):
+#        return "%s (%s - %s) " % (self.member.user.username, self.project.enterprise.name, self.member.MEMBER_TYPE[self.member.member_type][1]) 
     
     
     
@@ -66,7 +66,7 @@ class Task(Abs_Named_Model):
     
     points = models.PositiveIntegerField(_("Points"),default=0)
     
-    assigned = models.ForeignKey(ProjectMember,null=True,blank=True, related_name='tasks')
+    assigned = models.ForeignKey('enterprises.EnterpriseMember',null=True,blank=True, related_name='tasks')
     
     start_date = models.DateField(_("Starting Date"), default=datetime.date.today)
     end_date = models.DateField(_("Ending Date"), default=datetime.date.today)

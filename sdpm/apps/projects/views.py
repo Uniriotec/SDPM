@@ -13,8 +13,8 @@ from utils.decorators import enterprise_member_required
 
 from enterprises.models import Enterprise, EnterpriseMember
 
-from projects.forms import NewProjectForm, NewProjectMemberForm
-from projects.models import Project, ProjectMember,Task
+from projects.forms import NewProjectForm
+from projects.models import Project, Task
 
 
 @login_required
@@ -41,16 +41,17 @@ def add_project(request):
     enterprise = Enterprise.get_from_user_or_404(request.user)
     
     if request.method == 'POST':
-        form = NewProjectForm(request.POST)
+        form = NewProjectForm(enterprise,request.POST)
         if form.is_valid(): 
             new_project = form.save(commit=False)
             new_project.enterprise = enterprise
-            
             new_project.save()     
+            form.save_m2m()
+            
             
             return redirect('/')
     else:
-        form = NewProjectForm()
+        form = NewProjectForm(enterprise)
 
 
     return locals()
@@ -73,7 +74,7 @@ def add_project(request):
 @render_to('projects/add_project.html')
 def add_task(request,project_id):
     """
-    Add a new project to a given enterprise
+    Add a new task to a given enterprise
     """
     
     project = get_object_or_404(Project,pk=project_id)
